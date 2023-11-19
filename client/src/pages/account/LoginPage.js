@@ -8,7 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAccount } from '../../providers/account';
 import AuthService from '../../services/AuthService';
 import { WebError } from '../../services/WebService';
-
+import './LoginPage.css'
 function LoginPage() {
   const { t } = useTranslation();
   const { setAccount } = useAccount();
@@ -41,26 +41,34 @@ function LoginPage() {
   };
 
   return (
-    <Card style={{ width: '30rem' }}>
-      <Card.Body>
-        <Form onSubmit={handleLogin}>
-          <h1 className='display-5'>Sign in</h1>
-          <Form.Group className='mb-3' controlId='formUserID'>
-            <Form.Label>Email</Form.Label>
-            <Form.Control type='email' value={email} onChange={e => setEmail(e.target.value)} />
-          </Form.Group>
-          <Form.Group className='mb-3' controlId='formPassword'>
-            <Form.Label>Password</Form.Label>
-            <Form.Control type='password' value={password} onChange={e => setPassword(e.target.value)} />
-          </Form.Group>
-          { error && <Alert variant='danger' dismissible>{error}</Alert> }
-          {/*<p>No account? <Link to='/auth/register'>Register here</Link>.</p>*/}
-          <p><Link to='/auth/code'>Activate with access code</Link></p>
-          <Button variant='primary' type='submit'>Sign in</Button>
-        </Form>
+    <div style={{position:'relative'}}>
+      <div style={{margin: '36px 64px'}}>
+        <img src='https://fit.hcmute.edu.vn/Resources/Images/SubDomain/fit/logo-cntt2021.png' alt='Khoa CNTT UTE' width={'50%'} height={'50%'} />
+      </div>
+      <Card style={{ width: '40rem', height:'40rem', position:'absolute', top: '10%', left:'50%', content:'', marginLeft:'96px'}}>
+        <Card.Body>
+          <Form onSubmit={handleLogin} className='login-form-control'>
+            <h1 className='display-5 ' style={{marginTop:'24px', textAlign:'center', fontWeight:'bold'}}>Sign in</h1>
+            <Form.Group className='mb-3 login-form-control' controlId='formUserID'>
+              <Form.Label  >Email</Form.Label>
+              <Form.Control style={{padding:'12px'}} type='email' value={email} onChange={e => setEmail(e.target.value)} placeholder='Enter Your Email...'/>
+            </Form.Group>
+            <Form.Group className='mb-3 login-form-control' controlId='formPassword'>
+              <Form.Label>Password</Form.Label>
+              <Form.Control style={{padding:'12px', marginBottom:'12px'}} type='password' value={password} onChange={e => setPassword(e.target.value)} placeholder='Enter Your Password...'/>
+            </Form.Group>
+            { error && <Alert variant='danger' dismissible>{error}</Alert> }
+            {/*<p>No account? <Link to='/auth/register'>Register here</Link>.</p>*/}
+            <p><Link to='/auth/code' style={{textDecoration:'none', marginTop: '24px'}}>Activate with access code</Link></p>
+            <Button variant='primary'  type='submit' style={{padding: '8px 24px', fontSize:'18px', fontWeight:'bold', margin:'0 auto'}}>Sign in</Button>
+          </Form>
       </Card.Body>
-    </Card>
+
+      </Card>
+    </div>
   );
 }
 
 export default LoginPage;
+
+

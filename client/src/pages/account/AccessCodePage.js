@@ -34,7 +34,11 @@ function LoginPage() {
   };
 
   return (
-    <Card style={{ width: '30rem' }}>
+    <div style={{position:'relative'}}>
+      <div style={{margin: '36px 64px', objectFit:'contain'}}>
+        <img src='https://fit.hcmute.edu.vn/Resources/Images/SubDomain/fit/logo-cntt2021.png' alt='Khoa CNTT UTE' width={'50%'} height={'50%'}  />
+      </div>
+      <Card style={{ width: '40rem', minHeight:'4rem', position:'absolute', top: '10%', left:'50%', content:'', marginLeft:'96px'}}>
       <Card.Body>
         <Form onSubmit={handleLogin}>
           <h1 className='display-5'>Enter access code</h1>
@@ -62,6 +66,7 @@ function LoginPage() {
         </Form>
       </Card.Body>
     </Card>
+    </div>
   );
 }
 
